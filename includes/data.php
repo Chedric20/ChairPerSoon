@@ -1,43 +1,4 @@
 <?php
-// Local prototype data. No database connection is required.
-$faculty = [
-  'F01' => ['name' => 'Dr. Maria Santos', 'rank' => 'Associate Professor'],
-  'F02' => ['name' => 'Prof. Jose Reyes', 'rank' => 'Assistant Professor'],
-  'F03' => ['name' => 'Engr. Ana Villanueva', 'rank' => 'Instructor'],
-  'F04' => ['name' => 'Dr. Ramon Cruz', 'rank' => 'Professor'],
-];
-
-$sections = [
-  ['id'=>'IT201-A','course'=>'Data Structures','fac'=>'F01','size'=>38,'passed'=>26,'dropped'=>3,'avg'=>76,'resp'=>31,
-   'sete'=>['Clarity of instruction'=>2.8,'Mastery of subject'=>4.1,'Assessment fairness'=>3.4,'Student engagement'=>3.2],'trend'=>[3.6,3.3,3.4]],
-  ['id'=>'IT201-B','course'=>'Data Structures','fac'=>'F02','size'=>35,'passed'=>31,'dropped'=>1,'avg'=>84,'resp'=>29,
-   'sete'=>['Clarity of instruction'=>4.2,'Mastery of subject'=>4.3,'Assessment fairness'=>4.0,'Student engagement'=>4.1],'trend'=>[3.7,3.9,4.2]],
-  ['id'=>'IT310-A','course'=>'Database Systems','fac'=>'F04','size'=>40,'passed'=>33,'dropped'=>2,'avg'=>81,'resp'=>36,
-   'sete'=>['Clarity of instruction'=>3.9,'Mastery of subject'=>4.6,'Assessment fairness'=>3.8,'Student engagement'=>3.7],'trend'=>[4.0,4.0,4.0]],
-  ['id'=>'IT320-A','course'=>'Web Development','fac'=>'F03','size'=>30,'passed'=>27,'dropped'=>0,'avg'=>88,'resp'=>26,
-   'sete'=>['Clarity of instruction'=>4.4,'Mastery of subject'=>4.0,'Assessment fairness'=>4.3,'Student engagement'=>4.6],'trend'=>[3.8,4.1,4.3]],
-  ['id'=>'IT330-A','course'=>'Systems Analysis','fac'=>'F02','size'=>42,'passed'=>30,'dropped'=>5,'avg'=>74,'resp'=>33,
-   'sete'=>['Clarity of instruction'=>3.4,'Mastery of subject'=>3.9,'Assessment fairness'=>2.9,'Student engagement'=>3.3],'trend'=>[3.9,3.6,3.4]],
-  ['id'=>'IT340-A','course'=>'Networking 1','fac'=>'F04','size'=>28,'passed'=>25,'dropped'=>1,'avg'=>83,'resp'=>3,
-   'sete'=>['Clarity of instruction'=>4.0,'Mastery of subject'=>4.2,'Assessment fairness'=>4.0,'Student engagement'=>3.9],'trend'=>[4.0,4.1,4.0]],
-  ['id'=>'IT350-A','course'=>'Software Engineering','fac'=>'F03','size'=>33,'passed'=>28,'dropped'=>2,'avg'=>80,'resp'=>27,
-   'sete'=>['Clarity of instruction'=>3.7,'Mastery of subject'=>3.8,'Assessment fairness'=>3.9,'Student engagement'=>3.8],'trend'=>[3.5,3.7,3.8]],
-];
-
-// Illustrative sample records on a 0–20 scale; names are anonymized.
-$students = [
-  ['id'=>'MAT-001','name'=>'Mathematics student 1','grades'=>[5,6,8],'failed'=>3,'dropped'=>null],
-  ['id'=>'MAT-002','name'=>'Mathematics student 2','grades'=>[10,11,12],'failed'=>0,'dropped'=>null],
-  ['id'=>'MAT-003','name'=>'Mathematics student 3','grades'=>[7,5,6],'failed'=>2,'dropped'=>null],
-  ['id'=>'MAT-004','name'=>'Mathematics student 4','grades'=>[12,10,9],'failed'=>1,'dropped'=>null],
-  ['id'=>'MAT-005','name'=>'Mathematics student 5','grades'=>[8,8,8],'failed'=>1,'dropped'=>null],
-];
-
-return [
-  'program' => 'BS Information Technology',
-  'terms' => ['2025-1', '2025-2', '2026-1'],
-  'grade_periods' => ['Period 1 (G1)', 'Period 2 (G2)', 'Final grade (G3)'],
-  'faculty' => $faculty,
-  'sections' => $sections,
-  'students' => $students,
-];
+// Local prototype data, shared with the static build (scripts/build.mjs).
+// Edit includes/data.json to change it. No database connection is required.
+return json_decode(file_get_contents(__DIR__ . '/data.json'), true, 512, JSON_THROW_ON_ERROR);

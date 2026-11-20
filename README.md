@@ -1,15 +1,17 @@
 # ChairPerSoon - Program Chair prototype
 
-Requires PHP 8+. The prototype uses sample data stored in `includes/data.php`; no database service or setup is required.
+The prototype uses sample data stored in `includes/data.json`; no database service or setup is required.
 
-Start the app:
+## Netlify (static site)
+
+Netlify serves static files and does not run PHP, so `scripts/build.mjs` pre-renders every page to plain HTML in `dist/` at deploy time (configured in `netlify.toml`). It needs only Node.js; there are no dependencies to install. Pages are served at clean URLs such as `/dashboard`, `/sections`, `/faculty/F02`, `/students` and `/actions`, and old `.php` links redirect to them. `robots.txt` and `sitemap.xml` are generated using the site's URL.
+
+To preview locally: `node scripts/build.mjs` and then open `dist/index.html`, or run `netlify dev`.
+
+## PHP version
+
+The original PHP pages still work for local use or a PHP host and read the same `includes/data.json`. Requires PHP 8+.
 
 `php -S localhost:8000`
 
-Open http://localhost:8000/ to see the loading screen and continue to the dashboard.
-
-## Online hosting
-
-This PHP prototype can be uploaded to a PHP 8.4 host. For a free subdomain, the project is prepared for [InfinityFree](https://www.infinityfree.com/). Create a hosting account, select a free subdomain, activate its SSL certificate, then upload the project files and folders to the account's `htdocs` directory. The `.htaccess` file exposes `robots.txt` and `sitemap.xml` for search crawlers.
-
-After publishing, open `https://your-subdomain/robots.txt` and `https://your-subdomain/sitemap.xml` to confirm they load, then submit the sitemap in Google Search Console. Search indexing is controlled by the search engine and may take time.
+Open http://localhost:8000/ to see the loading screen and continue to the dashboard. On Apache hosts, the `.htaccess` file exposes `robots.txt` and `sitemap.xml` for search crawlers.

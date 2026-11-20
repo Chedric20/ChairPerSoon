@@ -1,0 +1,69 @@
+# Netlify serves static files and does not run PHP, so the pages are pre-rendered
+# to plain HTML at deploy time from includes/data.json.
+[build]
+  command = "node scripts/build.mjs"
+  publish = "dist"
+
+# Faculty picker fallback when JavaScript is off (/faculty?id=F02 -> /faculty/F02)
+[[redirects]]
+  from = "/faculty"
+  query = { id = ":id" }
+  to = "/faculty/:id"
+  status = 301
+  force = true
+
+# Keep old PHP links and bookmarks working
+[[redirects]]
+  from = "/faculty.php"
+  query = { id = ":id" }
+  to = "/faculty/:id"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/robots.php"
+  to = "/robots.txt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sitemap.php"
+  to = "/sitemap.xml"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dashboard.php"
+  to = "/dashboard"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sections.php"
+  to = "/sections"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/faculty.php"
+  to = "/faculty"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/students.php"
+  to = "/students"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/actions.php"
+  to = "/actions"
+  status = 301
+  force = true
